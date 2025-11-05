@@ -975,13 +975,17 @@ $(document).ready(function () {
 
     // Home Price Input
     $('#purchase-price').on('input', function () {
+
         let value = $(this).val().replace(/[^0-9]/g, '');
+        console.log(value);
         if (value) {
             value = parseInt(value);
 
             // Constrain to min/max
-            value = Math.max(minPrice, Math.min(value, maxPrice));
-
+            if(value > maxPrice){
+                value = Math.max(minPrice, Math.min(value, maxPrice));    
+            }
+            
             // Update slider position
             updatePriceSliderPosition(value);
 
