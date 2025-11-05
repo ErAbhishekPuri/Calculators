@@ -1016,7 +1016,10 @@ $(document).ready(function () {
             const constrainedPercentage = Math.max(1, Math.min(percentage, 100));
 
             // Update down payment value based on constrained percentage
-            value = Math.round(purchasePrice * (constrainedPercentage / 100));
+            if(value > purchasePrice){
+                value = Math.round(purchasePrice * (constrainedPercentage / 100));
+            }
+            
 
             // Update slider position
             updateDownPaymentSliderPosition(constrainedPercentage);
